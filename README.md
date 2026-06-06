@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Topic #24: Charity Donation Tracker API
 
 ## Project Description
@@ -22,3 +23,6 @@ Every secured endpoint requires a fixed header authorization credential:
 Run the application using your terminal execution command:
 ```bash
 mvn spring-boot:run
+=======
+# Charity-Donation-Tracker
+>>>>>>> b381680cbc8188ac52292866b2a03356ca642b99
