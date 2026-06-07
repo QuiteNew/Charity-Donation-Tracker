@@ -25,37 +25,36 @@ public class DonorController {
     private final DonorRepository donorRepository;
     private final DonorService donorService; // 1. Declare the field
 
-    // 2. Inject both into the constructor
+    
     public DonorController(DonorRepository donorRepository, DonorService donorService) {
         this.donorRepository = donorRepository;
         this.donorService = donorService;
     }
 
-    // 1. Get ALL active donors
     @GetMapping
     public List<Donor> getAllActiveDonors() {
         return donorRepository.findByDeletedAtIsNull();
     }
 
-    // 2. Search donors by name
+    
     @GetMapping("/search")
     public List<Donor> searchDonors(@RequestParam String name) {
         return donorRepository.findByNameContainingIgnoreCaseAndDeletedAtIsNull(name);
     }
 
-    // 3. Create a new donor
+    
     @PostMapping
     public Donor createDonor(@RequestBody @Valid Donor donor) {
         return donorRepository.save(donor);
     }
 
-    // 4. Update Donor
+    
     @PutMapping("/{id}")
     public Donor updateDonor(@PathVariable Long id, @RequestBody @Valid Donor donor) {
         return donorService.updateDonor(id, donor);
     }
 
-    // 5. Soft Delete Donor
+   
     @DeleteMapping("/{id}")
     public void deleteDonor(@PathVariable Long id) {
         donorService.softDeleteDonor(id);

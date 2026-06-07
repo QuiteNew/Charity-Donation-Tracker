@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalErrorHandler {
 
-    // 1. Handles the 400 Bad Request (including your @DecimalMin for positive donations)
+    
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
@@ -23,7 +23,7 @@ public class GlobalErrorHandler {
         return errors;
     }
     
-    // 2. Handles the 409 Conflict (Strictly for Closed Campaigns)
+    
     @ExceptionHandler(BusinessInvariantException.class)
     public ResponseEntity<Map<String, String>> handleInvariant(BusinessInvariantException e) {
         Map<String, String> body = new HashMap<>();
